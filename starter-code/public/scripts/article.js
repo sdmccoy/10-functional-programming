@@ -3,7 +3,7 @@ var app = app || {};
 
 // REVIEW: Check out all of the functions that we've cleaned up with arrow function syntax.
 
-// TODO: Wrap the contents of this file, except for the preceding 'use strict' and 'var app...' declararions, in an IIFE.
+// DONE TODO: Wrap the contents of this file, except for the preceding 'use strict' and 'var app...' declararions, in an IIFE.
 // Give the IIFE a parameter called 'module'.
 (function(module) {
 
@@ -39,11 +39,20 @@ var app = app || {};
   Article.loadAll = rows => {
     rows.sort((a,b) => (new Date(b.publishedOn)) - (new Date(a.publishedOn)));
 
-    // TODO: Refactor this forEach code, by using a `.map` call instead, since what we are trying to accomplish
+    // DONE TODO: Refactor this forEach code, by using a `.map` call instead, since what we are trying to accomplish
     // is the transformation of one collection into another. Remember that we can set variables equal to the result
     // of functions. So if we set a variable equal to the result of a .map, it will be our transformed array.
     // There is no need to push to anything.
-
+    Article.all = rawData.map(function (article){
+      return {
+        title: article.title,
+        category: article.category,
+        author: article.author,
+        authorUrl: article.authorUrl,
+        publishedOn: article.publishedOn,
+        body: article.body
+      }
+    });
     /* OLD forEach():
     rawData.forEach(function(ele) {
     Article.all.push(new Article(ele));
