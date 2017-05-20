@@ -99,7 +99,20 @@ var app = app || {};
       // The first property should be pretty straightforward, but you will need to chain
       // some combination of filter, map, and reduce to get the value for the second
       // property.
-
+      return {
+        authorName: author,
+        authorWordCount:
+          Article.all.filter(function(article){
+            if(article.author === author){
+              return true}
+          })
+        .map(function(article){
+          return article.body.split(' ').length;
+        })
+        .reduce(function(acc, cur){
+          return acc + cur;
+        }, 0)
+      };
     })
   };
 
