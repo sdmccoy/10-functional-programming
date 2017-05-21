@@ -46,12 +46,6 @@ var app = app || {};
     Article.all = rows.map(function (article){
       return new Article(article)
     });
-    /* OLD forEach():
-    rawData.forEach(function(ele) {
-    Article.all.push(new Article(ele));
-  });
-  */
-
   };
 
   Article.fetchAll = callback => {
